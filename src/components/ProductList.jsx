@@ -7,7 +7,7 @@ function ProductList({ products, addToCart }) {
       <h2>Available Products</h2>
 
       {products.length === 0 ? (
-        <p> No products found.</p>
+        <p> No products available.</p>
       ) : (
         products.map((product) => (
           <ProductCard

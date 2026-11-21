@@ -3,9 +3,9 @@ import React from 'react';
 function DarkModeToggle({ darkMode, toggleDarkMode }) {
   return (
     <button onClick={toggleDarkMode}>
-      {darkMode ? 'Toggle Loight Mode' : 'Toggle Dark Mode'}
+      {darkMode ? 'Toggle Light Mode' : 'Toggle Dark Mode'}
     </button>
-  )
+  );
 }
 
 export default DarkModeToggle;

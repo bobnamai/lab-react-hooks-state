@@ -2,17 +2,8 @@ import React, { useState } from 'react';
 import ProductList from './components/ProductList';
 import DarkModeToggle from './components/DarkModeToggle';
 import Cart from './components/Cart';
+import { sampleProducts } from './data/products';
 import './App.css';
-
-const products = [
-  { id: 1, name: 'Laptop', price: 800, category: 'Electronics'  },
-  { id: 2, name: 'Headphones', price: 50, category: 'Electronics'
-},
-  { id: 3, name: 'T-shirt', price: 25, category: 'Clothing' },
-  { id: 4, name: 'Jeans', price: 45, category: 'Clothing' },
-  { id: 5, name: 'Coffee Maker', price: 70, category: 'Home' },
-  { id: 6, name: 'Chair', price: 120, category: 'Home' },
-];
 
 function App() {
   const [darkMode, setDarkmode] = useState(false);
@@ -29,8 +20,10 @@ function App() {
 
   const filteredProducts =
     category === 'All'
-      ? products
-      : products.filter((product) => product.category === category);
+      ? sampleProducts
+      : sampleProducts.filter(
+          (product) => product.category === category
+      );
 
       return (
         <div className={`app ${darkMode ? 'dark' : 'light'}`}>
@@ -44,18 +37,21 @@ function App() {
           </header>
 
           <main>
-            <div classmate="filter">
+            <div className="filter">
               <label htmlFor="category">Filter by category:</label>
 
               <select
                 id="category"
                 value={category}
-                onChange={(e) => setCategory(e.currentTarget.value)}
+                onChange={(e) => setCategory(e.target.value)}
               >
                 <option value="All"> All Categories</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Dairy">Dairy</option>
                 <option value="Electronics">Electronics</option>
                 <option value="Clothing">Clothing</option>
                 <option value="Home">Home</option>
+                <option value="NonExistent">NonExistent</option>
               </select>
             </div>
 
@@ -63,6 +59,8 @@ function App() {
               products={filteredProducts}
               addToCart={addToCart}
             />
+
+            <Cart cartItems={cartItems} />
           </main>
         </div>
       );
